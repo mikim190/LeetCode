@@ -37,7 +37,7 @@ var findMedianSortedArrays = function(nums1, nums2) {
         let maxLeft1 = mid1 === 0 ? -Number.MAX_VALUE : nums1[mid1 - 1]; 
         let minRight1 = mid1 === length1 ? Number.MAX_VALUE : nums1[mid1];
         
-        let maxLeft2 = mid2 === 0 ? Number.MIN_VALUE : nums2[mid2 - 1];
+        let maxLeft2 = mid2 === 0 ? -Number.MAX_VALUE : nums2[mid2 - 1];
         let minRight2 = mid2 === length2 ? Number.MAX_VALUE : nums2[mid2];
         
         if (maxLeft1 <= minRight2 && maxLeft2 <= minRight1) {
@@ -55,3 +55,11 @@ var findMedianSortedArrays = function(nums1, nums2) {
     }
 
 };
+
+/*
+I used -Number.MAX_VALUE instead of Number.MIN_VALUE to pass below condition: 
+
+Math.max(Number.MIN_VALUE, -1) => will return Number.MIN_VALUE instead of -1
+
+If I use: Math.max(-Number.MAX_VALUE, -1) => will return -1 as larger number
+*/
