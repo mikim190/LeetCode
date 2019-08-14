@@ -1,5 +1,6 @@
 function hashMap(queryType, query) {
-   
+   let currentValue = 0;
+  
    let result =  queryType.reduce((hashTable, type, ind) => {
       if (type === 'insert') {
         hashTable[query[ind][0]] = query[ind][1]
@@ -25,17 +26,13 @@ function hashMap(queryType, query) {
        hashTable = memo; 
       }
       if (type === 'get') {
-        let currentValue;
-        if (ind === query.length - 1) {
-          return hashTable[query[ind][0]];
-        } else {
-          currentValue = hashTable[query[ind][0]];
-        }
+          currentValue += hashTable[query[ind][0]];
+
       }
 
     return hashTable;
     },{})
-  return result;    
+  return currentValue;    
 }
 
 let queryType = ["insert", "insert", "get", "addToValue", "addToKey", "get"];
