@@ -10,23 +10,35 @@ E: none
 */
 
 var alternatingSort = function (arr) {
+  
   var result = true;
   var sortedArr = [];
 
   let start = 0;
   let end = arr.length - 1;
-
+  let current = sortedArr[sortedArr.length-1] || -Number.MAX_VALUE;
+  
   while(sortedArr.length < arr.length) {
-    sortedArr.push(arr[start]);
+  
+    if (arr[start] < arr[end] && arr[start] > current || start === end) {
+      
+      sortedArr.push(arr[start]) 
 
-    if (arr[start] > arr[end] || sortedArr[start] > arr[start]) {
+    }
+      
+   
+   if (start !== end) {
+        sortedArr.push(arr[end]);
+        current = arr[end];
+    } 
+
+    if (arr[start] > arr[end]) {
       return false;
     }
-    if (start !== end) {
-      sortedArr.push(arr[end])
-    }
+
     start++;
     end--;
+    
   }
   return result;
 }
