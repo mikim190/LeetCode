@@ -1,4 +1,8 @@
 var removeDuplicates = function(nums) {
+   
+  if (nums.length < 2) {
+    return nums.length;
+  }
  
    let lastIndex = 0;
    nums.map(n => {
